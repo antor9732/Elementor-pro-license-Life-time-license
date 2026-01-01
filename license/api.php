@@ -408,3 +408,27 @@ class API {
         return true;
     }
 }
+
+// Disable WordPress update notifications and plugin API responses for Elementor Pro
+if ( ! function_exists( 'elementor_pro_disable_updates' ) ) {
+    add_filter( 'site_transient_update_plugins', function( $transient ) {
+        if ( is_object( $transient ) && isset( $transient->response['elementor-pro/elementor-pro.php'] ) ) {
+            unset( $transient->response['elementor-pro/elementor-pro.php'] );
+        }
+        return $transient;
+    }, 9999 );
+
+    add_filter( 'pre_set_site_transient_update_plugins', function( $transient ) {
+        if ( is_object( $transient ) && isset( $transient->response['elementor-pro/elementor-pro.php'] ) ) {
+            unset( $transient->response['elementor-pro/elementor-pro.php'] );
+        }
+        return $transient;
+    }, 9999 );
+
+    add_filter( 'plugins_api_result', function( $res, $action, $args ) {
+        if ( isset( $args->slug ) && $args->slug === 'elementor-pro' ) {
+            return null;
+        }
+        return $res;
+    }, 10, 3 );
+}
