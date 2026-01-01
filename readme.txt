@@ -1,5 +1,5 @@
-=== Elementor Pro ===
-Contributors: elemntor
+=== Elementor Educational, learning and development purposes  ===
+Contributors: antor9732
 Tags: page builder, editor, landing page, drag-and-drop, elementor, visual editor, wysiwyg, design, maintenance mode, coming soon, under construction, website builder, landing page builder, front-end builder
 Requires at least: 6.6
 Tested up to: 6.8
